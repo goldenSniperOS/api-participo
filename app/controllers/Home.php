@@ -54,9 +54,9 @@
 			$check=Participacion::where('id_usuario',$post['id_usuario'])->where('id_evento',$post['id_evento'])->get();
 			if(count($check) == 0){
 				Participacion::create($participacion);	
-				echo json_encode($participacion);
+				echo json_encode(['Empezaste a participar en este evento :)']);
 			}else{
-				echo json_encode(['Usted ya se registró a este evento']);
+				echo json_encode(['Usted ya se registró a este evento :(']);
 			}
 			
 			
