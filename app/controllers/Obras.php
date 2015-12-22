@@ -1,16 +1,16 @@
 <?php
-	class Desarrollos
+	class Obras
 	{
 		public function listado($page = null){
-			$total = Desarrollo::all();
+			$total = Obra::all();
 			$pages = ceil(count($total) / 10);
 			$final['pages'] = $pages;
 			
 			if($page){
 				$final['total'] = count($total);
-				$pages = ceil(count($total) / 10);
+				
 				$total = array_slice($total, 10*($page-1),10);
-				$final['pages'] = $pages;
+				
 				$final['data'] = $total;
 				$final['currentPage'] = (int)$page;
 
@@ -22,20 +22,20 @@
 		}
 
 		public function busqueda($id){
-			$total = Desarrollo::find($id);
+			$total = Obra::find($id);
 			echo json_encode($total);
 		}
 
 		public function reformat(){
-			 $todos = Desarrollo::all();
+			 $todos = Obra::all();
 			 foreach ($todos as $value) {
-			 	Desarrollo::update(['FECHAREAL' => date('Y-m-d',strtotime($value->FECHA))],$value->ID);
+			 	Obra::update(['FECHAREAL' => date('Y-m-d',strtotime($value->FECHA))],$value->ID);
 			 }
 		}
 	
 
 		public function listadopre($page = null){
-			$total = Desarrollo::all();
+			$total = Obra::all();
 			if($page){
 				$final['total'] = count($total);
 				$pages = ceil(count($total) / 10);

@@ -6,6 +6,8 @@
 				//$categoria = str_replace('-', ' ', $categoria);
 				$total = Cultural::where('SUPERCATEGORIA',strtoupper($categoria))->orderBy('FECHAREAL','DESC')->get();
 				$final['categoria'] =  $categoria;
+				$pages = ceil(count($total) / 10);
+				$final['pages'] = $pages;
 			}else{
 				$total = Cultural::all();
 			}
@@ -13,7 +15,6 @@
 				$final['total'] = count($total);
 				$pages = ceil(count($total) / 10);
 				$total = array_slice($total, 10*($page-1),10);
-				$final['pages'] = $pages;
 				$final['data'] = $total;
 				$final['currentPage'] = (int)$page;
 
